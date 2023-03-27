@@ -1,3 +1,9 @@
+"""
+This will return:
+    1. text based on the user's speech input
+    2. 0 if no speech is detected
+"""
+
 import whisper
 from pydub import AudioSegment
 import speech_recognition as sr

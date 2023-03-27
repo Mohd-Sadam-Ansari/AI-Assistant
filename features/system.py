@@ -82,7 +82,7 @@ def delete_directories(dir_name):
         return True
     except:
         return f"directorie can't be deleted as it is not present"
-delete_directories('saddam')
+
 def create_files(filename):
     try:
         cwd=os.getcwd()

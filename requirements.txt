@@ -109,6 +109,10 @@ webbrowser
 ##### For API Calls #####
 wolframalpha
 wikipedia
+pywikihow
 
 ##### For webcam control #####
 cv2
+
+##### For STT #####
+#ovos

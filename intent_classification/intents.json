@@ -13,7 +13,7 @@
         {
             "tag":"weather",
             "patterns":[
-                "weather report","today's weather","whats the weather","weather forecast","weather"
+                "weather report","today's weather","whats the weather","weather forecast","weather","give me the weather report"
             ],
             "responses":[
                 "weather"
@@ -33,7 +33,7 @@
         {
             "tag":"online_order",
             "patterns":[
-                "find me","i want to order a","i want to order","order a"
+                "find me","i want to order a","i want to order","order a","order me a"
             ],
             "responses":[
                 "online_order"
@@ -69,7 +69,7 @@
         {
             "tag":"create_file",
             "patterns":[
-                "make a file","create a file","construct a file","devise a file","form a file","generate a file",
+                "make a file","create a file","create a file","construct a file","devise a file","form a file","generate a file",
                 "produce a file","build a file","design a file","fabricate a file",".txt","create","make"
             ],
             "responses":[
@@ -128,7 +128,7 @@
         {
             "tag":"news",
             "patterns":[
-                "latest news","today's news","read news","read headlines","news articles","news paper","tell me the news"
+                "latest news","today's news","read news","read headlines","news articles","news paper","tell me the news","breaking news"
             ],
             "responses":[
                 "news"
@@ -245,7 +245,7 @@
         {
             "tag":"change_passsword",
             "patterns":[
-                "change password","update password","edit password","reset password","credential","reset","update","edit"
+                "change password","update password","edit password","reset password"
             ],
             "responses":[
                 "change_password"

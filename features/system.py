@@ -34,7 +34,7 @@ def close_application(app_name):
         return True
     except OSError as error:
         return error
-
+#close_application('texteditor')
 def shutdown():
     try:
         os.system("shutdown now")

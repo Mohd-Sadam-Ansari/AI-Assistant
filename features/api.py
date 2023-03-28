@@ -3,6 +3,13 @@ import requests
 import wikipedia
 import pyjokes
 import json
+import sys
+import os
+sys.path.append('stt/')
+sys.path.append('tts/')
+from tts import speak
+from stt import whisper_stt
+from playsound import playsound
 
 #To get a programming jokes
 def jokes():
@@ -44,7 +51,7 @@ def search_wiki(query):
     return result
 
 #To fetch latest news of India
-def news():
+def news(field):
     api_dict={"business":"https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=759eabe66a3949e79df242f6a6f37f9a",
     "entertainment":"https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=759eabe66a3949e79df242f6a6f37f9a",
     "health":"https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=759eabe66a3949e79df242f6a6f37f9a",
@@ -54,13 +61,12 @@ def news():
 
     content=None
     url=None
-    print("which field news do you want,[business],[sports],[health],[technology],[entertainment],[science]")
-    field=input("Type field news that you want:")
+    field=field.replace('news','')
+    field=field.replace('latest news of','')
+    field=field.replace('breaking news of','')
     for key,value in api_dict.items():
         if key.lower() in field.lower():
             url=value
-            print(url)
-            print("url was found")
             break
         else:
             url=True
@@ -68,20 +74,22 @@ def news():
                 print("url not found")
     news=requests.get(url).text
     news=json.loads(news)
-    print("here is the first news")
+    speak.speak("here is the first news")
+    playsound('test.wav')
+    os.remove('test.wav')
     arts=news["articles"]
+    article=[]
+    news_url=[]
     for articles in arts:
-        article=articles["title"]
-        print(article)
-        news_url=articles["url"]
-        print(f"for more info visit:{news_url}")
-
-        a=input("[press c for continue] or [press s to stop]")
-        if str(a)=="c":
-            pass
-        elif str(a)=="s":
-            break
-    print("thats all")
+        article.append(articles["title"])
+        news_url.append(articles["url"])
+    for i in range(2):
+        speak.speak(article[i])
+        playsound('test.wav')
+        os.remove('test.wav')
+    speak.speak("thats all")
+    playsound('test.wav')
+    return news_url
 
 
 if __name__=="_main_":

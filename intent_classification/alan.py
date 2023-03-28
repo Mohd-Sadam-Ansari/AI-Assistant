@@ -8,10 +8,10 @@ def keyword_extract(query):
 
     device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    with open('intents.json','r') as f:
+    with open('intent_classification/intents.json','r') as f:
         intents=json.load(f)
 
-    FILE="data.pth"
+    FILE="intent_classification/data.pth"
     data=torch.load(FILE)
 
     input_size=data["input_size"]
@@ -46,8 +46,6 @@ def keyword_extract(query):
     if prob.item()>0.75:
         for intent in intents["intents"]:
             if tag == intent["tag"]:
-                return f"{bot_name}:{random.choice(intent['responses'])}"
+                return f"{random.choice(intent['responses'])}"
     else:
-        return f"{bot_name}:I do not understand...."
-keyword=keyword_extract("whats the weather of punjab")
-print(keyword)
+        return f"I do not understand...."

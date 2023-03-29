@@ -48,4 +48,4 @@ def keyword_extract(query):
             if tag == intent["tag"]:
                 return f"{random.choice(intent['responses'])}"
     else:
-        return f"I do not understand...."
+        return f"Sorry, I do not understand. Please try again"

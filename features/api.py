@@ -2,13 +2,15 @@ import wolframalpha
 import requests
 import wikipedia
 import pyjokes
+import time
 import json
 import sys
 import os
+
 sys.path.append('stt/')
 sys.path.append('tts/')
-from tts import speak
-from stt import whisper_stt
+#from tts import speak
+#from stt import whisper_stt
 from playsound import playsound
 
 #To get a programming jokes
@@ -87,14 +89,15 @@ def news(field):
         speak.speak(article[i])
         playsound('test.wav')
         os.remove('test.wav')
+
     speak.speak("thats all")
     playsound('test.wav')
     return news_url
 
+def show_time():
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
+    return current_time
 
-if __name__=="_main_":
-    computation(query)
-    weather(location)
-    search_wiki(query)
-    news()
-
+if __name__=="__main__":
+    print(show_time())

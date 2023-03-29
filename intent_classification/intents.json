@@ -3,10 +3,10 @@
         {
             "tag":"greeting",
             "patterns":[
-                "Hi","Hey","How are you?","hello","Good day"
+                "Hi","Hey","How are you?","hello","Good day", "Whats up", "What's up"
             ],
             "responses":[
-                "Hey","Hi there,what can i do for you?"
+                "Hey","Hi there, Hello! what can i do for you?"
             ]
         },
 

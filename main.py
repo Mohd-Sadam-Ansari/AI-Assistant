@@ -1,4 +1,5 @@
 import sys
+import os
 sys.path.append("..")
 sys.path.append("tts/")
 sys.path.append("intent_classification/")
@@ -39,6 +40,10 @@ elif keyword=='shutdown':
     system.shutdown()
 elif keyword=='close':
     system.close_application(Query)
+elif keyword == 'time':
+    api.show_time()
 else:
     speak.speak(keyword)
     playsound('test.wav')
+
+os.remove("test.wav")

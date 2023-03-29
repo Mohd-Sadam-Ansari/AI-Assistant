@@ -12,7 +12,7 @@ import io
 # Example for testing(in run function call Main() instead of wish())
 #import wish
 #import weather
-import jokes
+#import jokes
 
 
 class MainThread(QThread):
@@ -50,9 +50,9 @@ class Gui_Start(QMainWindow):
         #with redirect_stdout(f):
         #greet=wish.wish()
             #weather.weather("Mumbai")
-        joke=jokes.jokes()
+        #joke=jokes.jokes()
         #res=system.system()
-        self.ui.textBrowser_Terminal.append(joke)
+        self.ui.textBrowser_Terminal.append()
         
         startExecution.start()
 

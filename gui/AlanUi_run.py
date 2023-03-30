@@ -1,4 +1,5 @@
-from AlanUI import Ui_ALAN
+#from AlanUI import Ui_ALAN
+from alan_ui import Ui_MainWindow
 from PyQt5 import QtCore ,QtGui ,QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -31,12 +32,11 @@ class Gui_Start(QMainWindow):
     def __init__(self):
 
         super().__init__()
-        self.ui=Ui_ALAN()
+        self.ui=Ui_MainWindow()
 
         self.ui.setupUi(self)
 
-        self.ui.Start_Button.clicked.connect(self.startTask)
-        self.ui.Exit_Button.clicked.connect(self.close)
+        self.ui.start_button.clicked.connect(self.startTask)
     
         
     def startTask(self):
@@ -52,20 +52,17 @@ class Gui_Start(QMainWindow):
             #weather.weather("Mumbai")
         #joke=jokes.jokes()
         #res=system.system()
-        self.ui.textBrowser_Terminal.append()
+
+        self.ui.terminal.setText("Hello Saddam")
         
         startExecution.start()
 
     def showTimeLive(self):
         time_live=QTime.currentTime()
         time=time_live.toString()
-        date_current=QDate.currentDate()
-        date=date_current.toString(Qt.ISODate)
-        label_Time="Time :" + time
-        label_Date="Date :" + date
+        label_Time=time
 
-        self.ui.textBrowser_Time.setText(label_Time)
-        self.ui.textBrowser_Date.setText(label_Date)
+        self.ui.time_browser.setText(label_Time)
 
 GuiApp=QApplication(sys.argv)
 Alan_ui=Gui_Start()

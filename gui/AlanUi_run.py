@@ -53,14 +53,14 @@ class Gui_Start(QMainWindow):
         #joke=jokes.jokes()
         #res=system.system()
 
-        self.ui.terminal.setText("Hello Saddam")
+        self.ui.terminal.setText('Alan: I am your personal Desktop Assistant')
         
         startExecution.start()
 
     def showTimeLive(self):
         time_live=QTime.currentTime()
         time=time_live.toString()
-        label_Time=time
+        label_Time='TIME:'+time
 
         self.ui.time_browser.setText(label_Time)
 

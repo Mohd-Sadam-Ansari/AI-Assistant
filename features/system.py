@@ -26,15 +26,7 @@ def take_picture():
             break
     cap.release()
     cv2.destroyAllWindows()
-    
-def close_application(app_name):
-    try:
-        pid=os.popen(f"pidof {app_name}").read().strip()
-        os.system(f"kill -9 {pid}")
-        return True
-    except OSError as error:
-        return error
-#close_application('texteditor')
+
 def shutdown():
     try:
         os.system("shutdown now")
@@ -101,23 +93,6 @@ def delete_files(filename):
     except OSError as error:
         return error
 
-def change_directories(dir_name):
-    while True:
-        cwd=os.getcwd()
-        files_contents=os.popen("ls").read()
-        if dir_name in files_contents:
-            os.chdir(dir_name)
-            print(os.getcwd())
-            break
-        else:
-            os.chdir("..")
-            cwd=os.getcwd()
-            files_contents=os.popen("ls").read()
-            if dir_name in files_contents:
-                os.chdir(dir_name)
-                print(os.getcwd())
-                break              
-
 def switch_window():
     pyautogui.keyDown("alt")
     pyautogui.press("tab")
@@ -170,13 +145,11 @@ def change_permission(filename,mode):
     except CalledProcessError as error:
         return error
 
-if __name__=="_main_":
+if __name__=="__main__":
     shutdown()
     restart()
-    close_application(data)
     launch_app(data)
     manual("mkdir")
-    change_directories()
     create_files()
     createuser()
     take_picture()

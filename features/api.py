@@ -9,7 +9,7 @@ import os
 
 sys.path.append('stt/')
 sys.path.append('tts/')
-#from tts import speak
+from tts import speak
 #from stt import whisper_stt
 from playsound import playsound
 
@@ -98,6 +98,33 @@ def show_time():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
     return current_time
+
+def news_1():
+    main_url="https://newsapi.org/v2/top-headlines?country=in&apiKey=759eabe66a3949e79df242f6a6f37f9a"
+    news_paper=requests.get(main_url).json()
+    article=news_paper["articles"]
+    results=[]
+    x=''
+    for ar in article:
+        results.append([ar["title"],ar["url"]])
+    for i in range(20):
+        x+=' '+str(i+1)+'. '
+        x+='news :'+str(results[i][0])
+        x+=(str(results[i][1]))
+        speak.speak(x)
+        playsound('test.wav')
+        os.remove('test.wav')
+        speak.speak('press q to exit')
+        playsound('test.wav')
+
+        a=input()
+        if a=='q':
+            break
+        else:
+            pass
+            
+    return x
+
 
 if __name__=="__main__":
     print(show_time())

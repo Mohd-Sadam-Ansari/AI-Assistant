@@ -30,39 +30,35 @@ def record_audio():
             filename = os.path.join(f"temp_speech.wav")
             audio_clip.export(filename, format="wav")
 
-record_audio()
-
-model = whisper.load_model("base")
-
-# load audio and pad/trim it to fit 30 seconds
-audio = whisper.load_audio("temp_speech.wav")
-audio = whisper.pad_or_trim(audio)
-
-# make log-Mel spectrogram and move to the same device as the model
-mel = whisper.log_mel_spectrogram(audio).to(model.device)
-
-# detect the spoken language
-_, probs = model.detect_language(mel)
-detected_lang = max(probs, key=probs.get)
-print(detected_lang)
-
 def transcribe():
+    model = whisper.load_model("base")
+
+    # load audio and pad/trim it to fit 30 seconds
+    audio = whisper.load_audio("temp_speech.wav")
+    audio = whisper.pad_or_trim(audio)
+
+    # make log-Mel spectrogram and move to the same device as the model
+    mel = whisper.log_mel_spectrogram(audio).to(model.device)
+
+    # detect the spoken language
+    _, probs = model.detect_language(mel)
+    detected_lang = max(probs, key=probs.get)
+
     if detected_lang == "en":
         options = whisper.DecodingOptions(fp16=False)
         result = whisper.decode(model, mel, options)
-        return result
     else:
-        return 0
+        result = 0
 
-result = transcribe()
+    os.remove("temp_speech.wav")
 
-os.remove("temp_speech.wav")
-
-def transcribed_text(result):
     try:
         return result.text
     except:
         return 0
 
 if __name__ == "__main__":
-    print(transcribed_text(result))
+    while True:
+        record_audio()
+        txt = transcribe()
+        print(txt)

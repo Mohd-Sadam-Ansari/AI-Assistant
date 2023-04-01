@@ -48,12 +48,15 @@
             ]
         },
         {
-            "tag":"online_order",
+            "tag":"manual",
             "patterns":[
-                "find me","i want to order a","i want to order","order a","order me a"
+                "manual",
+                "man command",
+                "instruction about command"
+
             ],
             "responses":[
-                "online_order"
+
             ]
         },
         

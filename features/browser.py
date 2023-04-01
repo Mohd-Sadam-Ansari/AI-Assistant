@@ -18,27 +18,16 @@ def play_on_youtube(query):
     return True  
 
 def sites(data):
+    data=data.replace('alan','')
+    data=data.replace('ellen','')
+    data=data.replace('please','')
+    data=data.replace('visit','')
+    data=data.replace('can you','')
+    if len(data)==0:
+        speak.speak('website name is not found, please try again.')
+        
     webbrowser.open(f'www.{data}.com')
     return True
-
-def online_order(query):
-    query=query.replace("find me",'')
-    query=query.replace("i want to order a",'')
-    query=query.replace("i want to order",'')
-    query=query.replace("order a",'')
-    query=query.replace("order me a",'')
-    query=query.replace('alan','')
-    query=query.replace('ellen','')
-
-    if 'pizza' in query:
-        web="https://pizzaonline.dominos.co.in/menu?"
-        webbrowser.open(web)
-    elif 'food' in query:
-        web='https://www.zomato.com/mumbai/order-food-online'
-        webbrowser.open(web)
-    else:
-        web='https://www.flipkart.com/search?q='+query
-        webbrowser.open(web)
 
 def google_search(query):
     query=query.replace('alan','')

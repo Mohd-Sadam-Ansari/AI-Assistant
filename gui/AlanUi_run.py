@@ -52,7 +52,7 @@ class Gui_Start(QMainWindow):
             #weather.weather("Mumbai")
         #joke=jokes.jokes()
         #res=system.system()
-
+        
         self.ui.terminal.setText('Alan: I am your personal Desktop Assistant')
         
         startExecution.start()

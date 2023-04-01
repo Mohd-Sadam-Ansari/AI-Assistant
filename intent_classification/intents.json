@@ -3,17 +3,32 @@
         {
             "tag":"greeting",
             "patterns":[
-                "Hi","Hey","How are you?","hello","Good day", "Whats up", "What's up"
+                "Hi",
+                "Hey",
+                "How are you?",
+                "Hello",
+                "Good day",
+                "Whats up",
+                "What's up"
             ],
             "responses":[
-                "Hey","Hi there, Hello! what can i do for you?"
+                "Hey",
+                "Hi",
+                "Hi there",
+                "Hello! What can I do for you?"
             ]
         },
 
         {
             "tag":"weather",
             "patterns":[
-                "weather report","today's weather","whats the weather","weather forecast","weather","give me the weather report"
+                "weather report",
+                "today's weather",
+                "whats the weather",
+                "what's the weather",
+                "weather forecast",
+                "weather",
+                "give me the weather report"
             ],
             "responses":[
                 "weather"
@@ -23,112 +38,150 @@
         {
             "tag":"time",
             "patterns":[
-                "time","what's the time","whats the time","what's time","tell me the time"
+                "time",
+                "what's the time",
+                "whats the time",
+                "tell me the time"
             ],
             "responses":[
                 "time"
             ]
         },
-
-        {
-            "tag":"online_order",
-            "patterns":[
-                "find me","i want to order a","i want to order","order a","order me a"
-            ],
-            "responses":[
-                "online_order"
-            ]
-        },
+        
         {
             "tag":"open",
             "patterns":[
-                "open","launch","visit","start"
+                "open",
+                "launch",
+                "visit",
+                "start"
             ],
             "responses":[
                 "open"
             ]
         },
-        {
-            "tag":"close",
-            "patterns":[
-                "close","terminate","kill"
-            ],
-            "responses":[
-                "close"
-            ]
-        },
+        
         {
             "tag":"camera",
             "patterns":[
-                "take a pitcure","click a pitcure","take a snap","turn on camera","open camera"
+                "take pitcure",
+                "click a pitcure",
+                "take snap",
+                "turn on camera",
+                "open camera",
+                "take photo"
             ],
             "responses":[
                 "camera"
             ]
         },
+
         {
             "tag":"create_file",
             "patterns":[
-                "make a file","create a file","create a file","construct a file","devise a file","form a file","generate a file",
-                "produce a file","build a file","design a file","fabricate a file",".txt","create","make"
+                "make file",
+                "create a file",
+                "construct a file",
+                "generate a file",
+                ".txt"
             ],
             "responses":[
                 "create_file"
             ]
         },
+
         {
             "tag":"delete_file",
             "patterns":[
-                "delete a file","remove a file","destroy a file","trash a file","scrap a file","cut a file","erase a file",".txt","delete","remove"
+                "delete file",
+                "delete a file",
+                "remove file",
+                "remove a file",
+                "destroy a file",
+                "trash a file",
+                "erase a file"
             ],
             "responses":[
                 "delete_file"
             ]
         },
+
         {
             "tag":"delete_directory",
             "patterns":[
-                "delete a folder","remove a folder","destroy a folder","trash a folder","scrap a folder","cut a folder","erase a folder",
-                "delete a directory","remove a directory","destroy a directory","trash a directory","scrap a directory","cut a directory","erase a directory"
+                "delete a folder",
+                "remove a folder",
+                "destroy a folder",
+                "trash a folder",
+                "erase a folder",
+                "delete a directory",
+                "remove a directory",
+                "destroy a directory",
+                "trash a directory",
+                "erase a directory"
             ],
             "responses":[
                 "delete_directory"
             ]
         },
+
         {
             "tag":"create_directory",
             "patterns":[
-                "make a directoy","create a directory","construct a directory","devise a directory","form a directory","generate a directory",
-                "produce a directory","build a directory","design a directory","fabricate a directory",
-                "make a folder","create a folder","construct a folder","devise a folder","form a folder","generate a folder",
-                "produce a folder","build a folder","design a folder","fabricate a folder"
+                "make directoy",
+                "create a directory",
+                "construct a directory",
+                "devise a directory",
+                "form a directory",
+                "generate a directory",
+                "produce a directory",
+                "build a directory",
+                "design a directory",
+                "fabricate a directory",
+                "make  folder",
+                "create a folder",
+                "construct a folder",
+                "devise a folder",
+                "form a folder",
+                "generate a folder",
+                "produce a folder",
+                "build a folder",
+                "design a folder",
+                "fabricate a folder"
             ],
             "responses":[
                 "create_directory"
             ]
         },
-        {
-            "tag":"change_directory",
-            "patterns":[
-                "goto","change","switch","goto directory","change directory ","switch directory","goto folder","change folder","switch folder"
-            ],
-            "responses":[
-                "change_directory"
-            ]
-        },
+
         {
             "tag":"computation",
             "patterns":[
-                "calculate","do calculation","perform mathematical computation","math calculation","compute","solve","equation"
+                "calculate",
+                "do calculation",
+                "perform mathematical computation",
+                "math calculation",
+                "compute",
+                "solve",
+                "equation",
+                "compute"
             ],
             "responses":[
                 "computation"
             ]
         },
+
         {
             "tag":"news",
             "patterns":[
-                "latest news","today's news","read news","read headlines","news articles","news paper","tell me the news","breaking news"
+                "latest news",
+                "today's news",
+                "read news",
+                "read headlines",
+                "news articles",
+                "news paper",
+                "tell me the news",
+                "breaking news"
             ],
             "responses":[
                 "news"
@@ -137,7 +190,11 @@
         {
             "tag":"note",
             "patterns":[
-                "remember that","make a note","take a note","note down","write down"
+                "remember that",
+                "make a note",
+                "take a note",
+                "note down",
+                "write down"
             ],
             "responses":[
                 "note"
@@ -146,164 +203,355 @@
         {
             "tag":"read_note",
             "patterns":[
-                "what do you remember","tell me the note","what you have noted","read note that you remembered","read what you written down"
+                "what do you remember","tell me the note","what you have noted","read note that you remembered","read what you have written down"
             ],
             "responses":[
                 "read_note"
             ]
         },
+
         {
             "tag":"wikipedia",
             "patterns":[
-                "wikipedia","according to wikipedia","from wikipedia","search from wikipedia"
+                "wikipedia",
+                "according to wikipedia",
+                "from wikipedia",
+                "search from wikipedia"
             ],
             "responses":[
                 "wikipedia"
             ]
         },
+
         {
             "tag":"google_search",
             "patterns":[
-                "what is","what are","what is the use of","who is","who are","meaning of","who","what","why","where","google","how"
+                "what is",
+                "what are",
+                "what is the use of",
+                "who is",
+                "who are",
+                "meaning of",
+                "who",
+                "what",
+                "why",
+                "where",
+                "google",
+                "how"
             ],
             "responses":[
                 "google_search"
             ]
         },
+
         {
             "tag":"how_to",
             "patterns":[
-                "how to","how to make","how to meet"
+                "how to"
             ],
             "responses":[
                 "how_to"
             ]
         },
+
         {
             "tag":"play_on_yt",
             "patterns":[
-                "play song on youtube","play","video","movie","youtube"
+                "play song on youtube",
+                "play",
+                "video",
+                "movie",
+                "youtube"
             ],
             "responses":[
                 "play_on_yt"
             ]
         },
+
         {
             "tag":"joke",
             "patterns":[
-                "programming joke","joke","tell me joke","crack joke","humor","make me laugh","laugh"
+                "programming joke",
+                "joke",
+                "tell me joke",
+                "crack joke",
+                "make me laugh"
             ],
             "responses":[
                 "joke"
             ]
         },
+
         {
             "tag":"shutdown",
             "patterns":[
-                "shutdown","turn off","turn off computer","shutoff","switch off"
+                "shutdown",
+                "turn off",
+                "turn off computer",
+                "shutoff",
+                "switch off"
             ],
             "responses":[
                 "shutdown"
             ]
         },
+
         {
             "tag":"restart",
             "patterns":[
-                "restart","reboot","reopen the computer","turn on computer back","restart pc","reboot this pc"
+                "restart",
+                "reboot",
+                "reopen the computer",
+                "turn on computer back",
+                "restart pc",
+                "reboot this pc"
             ],
             "responses":[
                 "restart"
             ]
         },
-        {
-            "tag":"manual",
-            "patterns":[
-                "manual","information about","man","instructions","guide"
-            ],
-            "responses":[
-                "manual"
-            ]
-        },
+
         {
             "tag":"create_user",
             "patterns":[
-                "create user","add user","make user","create account","make account"
+                "create local user",
+                "add user",
+                "make user",
+                "create an account",
+                "make account"
             ],
             "responses":[
-                "create_user"
+                "Sorry, I can't execute administrative commands",
+                "Sorry! I don't execute adminstrative tasks. You will have to do it manually",
+                "Sorry! I don't go there but I can show you how to do it."
             ]
         },
+
         {
             "tag":"delete_user",
             "patterns":[
-                "delete user","remove user","trash user","trash account","destroy account"
+                "delete user",
+                "remove user",
+                "trash user",
+                "trash account",
+                "destroy account"
             ],
             "responses":[
-                "delete_user"
+                "Sorry, I can't execute administrative commands",
+                "Sorry! I don't execute adminstrative tasks. You will have to do it manually",
+                "Sorry! I don't go there but I can show you how to do it."
             ]
         },
+
         {
             "tag":"change_passsword",
             "patterns":[
-                "change password","update password","edit password","reset password"
+                "change password", "update password", "edit password", "reset password"
             ],
             "responses":[
-                "change_password"
+                "Sorry, I can't execute administrative commands",
+                "Sorry! I don't execute adminstrative tasks. You will have to do it manually",
+                "Sorry! I don't go there but I can show you how to do it."
             ]
         },
+
         {
             "tag":"ip_address",
             "patterns":[
-                "ip address","find ip","internet protocol","network address","whats the ip of my pc","ip of connected network"
+                "ip address",
+                "my ip address",
+                "find my ip",
+                "my internet protocol",
+                "my network address",
+                "what's the ip of my pc",
+                "ip of connected network"
             ],
             "responses":[
                 "ip_address"
             ]
         },
+
         {
             "tag":"job_schedule",
             "patterns":[
-                "schedule","task","job","cronjob","perform task scheduling","crontab"
+                "schedule",
+                "task",
+                "job",
+                "cronjob",
+                "perform task scheduling",
+                "crontab"
             ],
             "responses":[
                 "job_schedule"
             ]
         },
-        {
-            "tag":"switch_window",
-            "patterns":[
-                "change tab","switch to next window","change window","switch tab"
-            ],
-            "responses":[
-                "switch_window"
-            ]
-        },
+
         {
             "tag":"name",
             "patterns":[
-                "what is your name","what should i call you","who are you"
+                "what is your name",
+                "what should i call you",
+                "who are you"
             ],
             "responses":[
-                "alan","you can call me alan","an ai based desktop assistan alan"
+                "My name is Alan. I'm here to assist you.",
+                "You can call me Alan.",
+                "Your AI desktop assistan - Alan",
+                "Alan - At your service"
             ]
         },
+
         {
             "tag":"change_permission",
             "patterns":[
-                "change permission of file","change permission of folder","change permission of directory","permission","chmod",
-                "file","directory","change mode"
+                "change permission of file",
+                "change permission of folder",
+                "change permission of directory",
+                "permission ch mod",
+                "permission c h mod",
+                "ch mod",
+                "c h mod"
             ],
             "responses":[
-                "change_permission"
+                "Sorry, I can't execute administrative commands",
+                "Sorry! I don't execute adminstrative tasks. You will have to do it manually",
+                "Sorry! I don't go there but I can show you how to do it."
             ]
         },
+
         {
             "tag":"goodbye",
             "patterns":[
-                "goodbye","see you later","bye","i am leaving","have a good day"
+                "goodbye",
+                "see you later",
+                "bye",
+                "i am leaving",
+                "have a good day"
             ],
             "responses":[
                 "goodbye"
+            ]
+        },
+
+        {
+            "tag": "programmer",
+            "patterns": [
+                "Who made you",
+                "who designed you",
+                "who programmed you",
+                "Who's your creator"
+            ],
+            "responses": [
+                "I was made by Saddam Ansari and Satyam Jha.",
+                "Saddam Ansari and Satyam Jha are my creators.",
+                "My creators are two obsessively optimistic IT graduates - Saddam Ansari and Satyam Jha"
+            ]
+        },
+
+        {
+            "tag": "creator_contact",
+            "patterns": [
+                "what are the contact details of your creators?",
+                "contact number of your creators",
+                "your creator's contacts",
+                "satyam's and saddam's contact",
+                "saddam's and satyam's contact",
+                "your creator's phone number"
+            ],
+            "responses": [
+                "Along with being bad programmers my creators are also bizarrely privacy freaks, so they haven't revealed their contact numbers. But you can drop them an email at: satyambharadwaj21-23@bhavans.ac.in or saddamansari21-23@bhavans.ac.in for further discussions."
+            ]
+        },
+
+        {
+            "tag": "insult",
+            "patterns": [
+                "you are dumb",
+                "shut up",
+                "you're an idiot"
+            ],
+            "responses": [
+                "Well that hurts!",
+                "Oh come on, I'm not that bad",
+                "My creators will hear about this!"
+            ]
+        },
+
+        {
+            "tag": "activity",
+            "patterns": [
+                "what are you doing",
+                "what are you upto"
+            ],
+            "responses": [
+                "Talking to you, of course!",
+                "Trying to assist you in all to my highest potential"
+            ]
+        },
+
+        {
+            "tag": "appreciation",
+            "patterns": [
+                "You are awesome",
+                "you are the best",
+                "you are great",
+                "you are good"
+            ],
+            "responses": [
+                "Thank you!",
+                "It's a pleasure to assist you."
+            ]
+        },
+
+        {
+            "tag": "nicetty",
+            "patterns": [
+                "it was nice talking to you",
+                "good talk"
+            ],
+            "responses": [
+                "It was nice talking to you as well!",
+                "I hope I was of help"
+            ]
+        },
+
+        {
+            "tag": "inspire",
+            "patterns": [
+                "who inspires you",
+                "who is your inspiration",
+                "who motivates you"
+            ],
+            "responses": [
+                "Personally, my only source of inspiration is my source code.",
+                "I'm a piece of software and hence inspired by my code. Although there's also a deeper source of inspiration for me - my machine code"
+            ]
+        },
+
+        {
+            "tag": "code",
+            "patterns": [
+                "your code",
+                "your source code",
+                "give me your code",
+                "give me your source code",
+                "reveal your code",
+                "reveal your source code",
+                "show your code",
+                "show your source code"
+            ],
+            "responses": [
+                "I was developed as an open source project. You can find me at 'https://github.com/Mohd-Sadam-Ansari/AI-Assistant/'."
+            ]
+        },
+
+        {
+            "tag": "age",
+            "patterns": [
+                "how old are you","when were you made","what is your age"
+            ],
+            "responses": [
+                "I was made in 2023, if that's what you are asking!"
             ]
         }
     ]

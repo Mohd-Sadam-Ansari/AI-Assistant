@@ -6,7 +6,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset,DataLoader
 from model import NeuralNetwork
 
-with open('intents.json','r') as f:
+with open('intent_classification/intents.json','r') as f:
     intents=json.load(f)
 
 all_words=[]
@@ -93,7 +93,7 @@ data={
     "tags":tags
 }
 
-FILE="data.pth"
+FILE="intent_classification/data.pth"
 torch.save(data,FILE)
 
 print(f"training complete. file saved to {FILE}")

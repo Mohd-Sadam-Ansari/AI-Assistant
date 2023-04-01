@@ -10,23 +10,58 @@ import os
 sys.path.append('stt/')
 sys.path.append('tts/')
 from tts import speak
-#from stt import whisper_stt
+from stt import whisper_stt
 from playsound import playsound
 
 #To get a programming jokes
 def jokes():
     joke=pyjokes.get_joke(language='en',category='neutral')
+    speak.speak(joke)
+    playsound('test.wav')
+    os.remove('test.wav')
     return joke
 
 #To perform mathematical calculation
 def computation(query):
-    client=wolframalpha.Client('VTY239-55Y8AXJEW4')
-    res=client.query(query)
-    result=next(res.results).text
-    return result
+    query=query.replace('alan','')
+    query=query.replace('ellen','')
+    query=query.replace('calculate','')
+    query=query.replace('solve','')
+    query=query.replace('compute','')
+    query=query.replace('perform mathematical computation','')
+    query=query.replace('equation','')
+    query=query.replace('math calculation','')
+    query=query.replace('do calculation','')
+    query=query.replace('into','multiply by')
+    if len(query)==0:
+        return'Equation not provided,please try again..'
+    else:
+        client=wolframalpha.Client('VTY239-55Y8AXJEW4')
+        res=client.query(query)
+        result=next(res.results).text
+        return result  
     
 #To fetch weather forecast of particular city
 def weather(location):
+    location=location.replace('weather report','')
+    location=location.replace('whats the weather','')
+    location=location.replace("what's the weather",'')
+    location=location.replace("weather forecast",'')
+    location=location.replace('give me the weather report of','')
+    location=location.replace("today's weather",'')
+    location=location.replace('alan','')
+    location=location.replace('ellen','')
+    location=location.replace('give me','')
+    location=location.replace('weather','')
+    location=location.replace('give','')
+    location=location.replace('of','')
+    location=location.replace('?','')
+    location=location.replace('!','')
+    location=location.replace(".",'')
+
+    if len(location)==0:
+        location='mumbai'
+    
     Base_Url="http://api.openweathermap.org/data/2.5/weather?"
     API_KEY="e0fdd235cc32f3a8e4530658254850a6"
     url=Base_Url+"appid="+API_KEY+"&q="+location
@@ -49,8 +84,15 @@ def weather(location):
 
 #To retrive information from the wikipedia
 def search_wiki(query):
-    result=wikipedia.summary(query)
-    return result
+    query=query.replace("wikipedia",'')
+    query=query.replace("according to wikipedia",'')
+    query=query.replace("from wikipedia",'')
+    query=query.replace("search from wikipedia",'')
+    if len(query)==0:
+        return'Nothing found to search,please try again.'
+    else:
+        result=wikipedia.summary(query)
+        return result
 
 #To fetch latest news of India
 def news(field):
@@ -63,68 +105,35 @@ def news(field):
 
     content=None
     url=None
-    field=field.replace('news','')
-    field=field.replace('latest news of','')
-    field=field.replace('breaking news of','')
     for key,value in api_dict.items():
         if key.lower() in field.lower():
             url=value
             break
         else:
-            url=True
-            if url is True:
-                print("url not found")
+            url="https://newsapi.org/v2/top-headlines?country=in&apiKey=759eabe66a3949e79df242f6a6f37f9a"
     news=requests.get(url).text
     news=json.loads(news)
-    speak.speak("here is the first news")
+    speak.speak("here is the news")
     playsound('test.wav')
     os.remove('test.wav')
     arts=news["articles"]
     article=[]
-    news_url=[]
     for articles in arts:
-        article.append(articles["title"])
-        news_url.append(articles["url"])
-    for i in range(2):
+        article.append([articles["title"],articles['url']])
+    for i in range(5):
         speak.speak(article[i])
         playsound('test.wav')
         os.remove('test.wav')
-
-    speak.speak("thats all")
-    playsound('test.wav')
-    return news_url
+        head=' '.join([str(element) for element in article])
+        return head
 
 def show_time():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
+    speak.speak('time is'+current_time)
+    playsound('test.wav')
+    os.remove('test.wav')
     return current_time
 
-def news_1():
-    main_url="https://newsapi.org/v2/top-headlines?country=in&apiKey=759eabe66a3949e79df242f6a6f37f9a"
-    news_paper=requests.get(main_url).json()
-    article=news_paper["articles"]
-    results=[]
-    x=''
-    for ar in article:
-        results.append([ar["title"],ar["url"]])
-    for i in range(20):
-        x+=' '+str(i+1)+'. '
-        x+='news :'+str(results[i][0])
-        x+=(str(results[i][1]))
-        speak.speak(x)
-        playsound('test.wav')
-        os.remove('test.wav')
-        speak.speak('press q to exit')
-        playsound('test.wav')
-
-        a=input()
-        if a=='q':
-            break
-        else:
-            pass
-            
-    return x
-
-
 if __name__=="__main__":
-    print(show_time())
+    pass

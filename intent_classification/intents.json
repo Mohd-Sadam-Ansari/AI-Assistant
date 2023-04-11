@@ -56,7 +56,7 @@
 
             ],
             "responses":[
-
+                "manual"
             ]
         },
         
@@ -65,11 +65,20 @@
             "patterns":[
                 "open",
                 "launch",
-                "visit",
                 "start"
             ],
             "responses":[
                 "open"
+            ]
+        },
+
+        {
+            "tag":"visit",
+            "patterns":[
+                "visit","website"
+            ],
+            "responses":[
+                "visit"
             ]
         },
         
@@ -263,6 +272,15 @@
             ],
             "responses":[
                 "how_to"
+            ]
+        },
+        {
+            "tag":"switch_tab",
+            "patterns":[
+                "change tab","switch tab"
+            ],
+            "responses":[
+                "switch_tab"
             ]
         },
 

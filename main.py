@@ -13,42 +13,69 @@ from intent_classification import model,alan,nltk_utils
 from features import system,api,greet,browser
 from playsound import playsound
 def main():
+    result=greet.greeting()
     while True:
         whisper_stt.record_audio()
         query=whisper_stt.transcribe()
         Query=str(query).lower()
         keyword=alan.keyword_extract(Query)
         if keyword=='news':
-            returned=api.news(Query)
+            result=api.news(Query)
         elif keyword=='create_file':
-            system.create_files(Query)
+            result=system.create_files(Query)
         elif keyword=='camera':
-            system.take_picture()
+            result=system.take_picture()
         elif keyword=='delete_file':
-            system.delete_files(Query)
+            result=system.delete_files(Query)
         elif keyword=='create_directory':
-            system.create_directories(Query)
+            result=system.create_directories(Query)
         elif keyword=='delete_directory':
-            system.delete_directories(Query)
+            result=system.delete_directories(Query)
         elif keyword=='note':
-            system.take_note(Query)
+            result=system.take_note(Query)
         elif keyword=='read_note':
-            system.read_note()
+            result=system.read_note()
         elif keyword=='restart':    
-            system.restart()
+            result=system.restart()
         elif keyword=='shutdown':
-            system.shutdown()
+            result=system.shutdown()
         elif keyword == 'time':
-            api.show_time()
+            result=api.show_time()
         elif keyword=='joke':
-            joke=api.jokes()
+            result=joke=api.jokes()
+        elif keyword=='weather':
+            result=api.weather(Query)
+        elif keyword=='manual':
+            result=system.manual(Query)
+        elif keyword=='open':
+            result=system.launch_app(Query)
+        elif keyword=='computation':
+            result=api.computation(Query)
+        elif keyword=='wikipedia':
+            result=api.search_wiki(Query)
+        elif keyword=='google_search':
+            result=browser.google_search(Query)
+        elif keyword=='how_to':
+            result=browser.how_to(Query)
+        elif keyword=='play_on_yt':
+            result=browser.play_on_youtube(Query)
+        elif keyword=='ip_address':
+            result=system.ip_address()
+        elif keyword=='job_schedule':
+            result=system.job_schedule()
+        elif keyword=='switch_tab':
+            result=system.switch_window()
+        elif keyword=='visit':
+            result=browser.sites(Query)
         elif keyword=='goodbye':
             sys.exit()
         else:
-            speak.speak(keyword)
+            result=keyword
+            speak.speak(result)
             playsound('test.wav')
             os.remove("test.wav")
-
+        return result
+        
 print(main())
 
 

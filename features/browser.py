@@ -23,10 +23,14 @@ def sites(data):
     data=data.replace('please','')
     data=data.replace('visit','')
     data=data.replace('can you','')
+    data=data.replace('website','')
+    data=data.replace('.com','')
+    data=data.replace('.','')
     if len(data)==0:
         speak.speak('website name is not found, please try again.')
-        
-    webbrowser.open(f'www.{data}.com')
+        playsound('tets.wav')
+    link=f'https://www.{data}.com'    
+    webbrowser.open(link)
     return True
 
 def google_search(query):

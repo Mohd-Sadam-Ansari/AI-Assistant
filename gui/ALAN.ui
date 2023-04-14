@@ -102,7 +102,8 @@
      </property>
      <property name="styleSheet">
       <string notr="true">background-color:rgb(102,220,220);
-color:white;font-size:16pt;</string>
+color:rgb(255,255,255);
+font: 16pt &quot;DejaVu Sans&quot;;</string>
      </property>
     </widget>
    </widget>

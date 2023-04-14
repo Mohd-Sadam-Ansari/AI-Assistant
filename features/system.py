@@ -1,6 +1,5 @@
 import os,signal
 import subprocess
-import cv2
 import pyautogui
 import time
 import shutil
@@ -10,16 +9,21 @@ from playsound import playsound
 sys.path.append('/tts')
 from tts import speak
 
+
 def launch_app(app_name):
     app_name=app_name.replace('alan','')
     app_name=app_name.replace('open','')
-    app_name=app_name.replace('ellen','')
+    app_name=app_name.replace('ellen,','')
     app_name=app_name.replace('start','')
     app_name=app_name.replace('launch','')
     app_name=app_name.replace('please','')
+    app_name=app_name.replace('.','')
+    app_name=app_name.replace(',','')
+    app_name=app_name.replace('?','')
+
 
     APP_LIST = {
-    'gedit': ['gedit', 'g-edit', 'g edit', 'editor', 'text editor'],
+    'gedit': ['gedit', 'g-edit', 'g edit.', 'editor', 'text editor'],
     'libreoffice': ['ms office', 'ms-office', 'm s office', 'm-s-office', 'office'],
     'libreoffice --writer': ['word', 'word document', 'rich text', 'rich text editor', 'ms word', 'ms-word', 'm s word', 'm-s-word'],
     'libreoffice --calc': ['excel', 'exel', 'excel document', 'exel document' 'calc', 'spreadsheet', 'spread sheet', 'spread-sheet' 'ms excel', 'ms-excel', 'm s excel', 'ms-exel', 'm s exel', 'm-s-exel'],
@@ -35,31 +39,14 @@ def launch_app(app_name):
         else:
             app_name=app_name
     try:
-        os.system(app_name)
+        subprocess.call(app_name)
         return True
     except:
         return "Application not found."
 
-def take_picture():
-    cap=cv2.VideoCapture(0)
-    speak.speak('press s for click a pitcure or press q to quit')
-    playsound('test.wav')
-    os.remove('test.wav')
-    while True:
-        ret,img=cap.read()
-        cv2.imshow('img',img)
-        if cv2.waitKey(1) & 0xFF==ord('s'):
-            cv2.imwrite('picture.png',img)
-            break
-        elif cv2.waitKey(1) & 0xFF==ord('q'):
-            break
-    
-    cap.release()
-    cv2.destroyAllWindows()
-
 def shutdown():
     try:
-        os.system("shutdown now")
+        os.system("systemctl poweroff -i")
         return True
     except OSError as error:
         return error
@@ -103,28 +90,30 @@ def manual(command):
         return "No manual found."
 
 def create_directories(dir_name):
-    dir_name=dir_name=replace('alan','')
-    dir_name=dir_name=replace('ellen','')
-    dir_name=dir_name=replace('make directoy','')
-    dir_name=dir_name=replace("create a directory","")
-    dir_name=dir_name=replace("construct a directory","")
-    dir_name=dir_name=replace("devise a directory","")
-    dir_name=dir_name=replace("form a directory","")
-    dir_name=dir_name=replace("generate a directory","")
-    dir_name=dir_name=replace( "produce a directory","")
-    dir_name=dir_name=replace("build a directory","")
-    dir_name=dir_name=replace("design a directory","")
-    dir_name=dir_name=replace("fabricate a directory","")
-    dir_name=dir_name=replace('make folder','')
-    dir_name=dir_name=replace("create a folder","")
-    dir_name=dir_name=replace("construct a folder","")
-    dir_name=dir_name=replace("devise a folder","")
-    dir_name=dir_name=replace("form a folder","")
-    dir_name=dir_name=replace("generate a folder","")
-    dir_name=dir_name=replace( "produce a folder","")
-    dir_name=dir_name=replace("build a folder","")
-    dir_name=dir_name=replace("design a folder","")
-    dir_name=dir_name=replace("fabricate a folder","")
+    dir_name=dir_name.replace('alan','')
+    dir_name=dir_name.replace('ellen','')
+    dir_name=dir_name.replace('make directoy','')
+    dir_name=dir_name.replace("create a directory","")
+    dir_name=dir_name.replace("construct a directory","")
+    dir_name=dir_name.replace("devise a directory","")
+    dir_name=dir_name.replace("form a directory","")
+    dir_name=dir_name.replace("generate a directory","")
+    dir_name=dir_name.replace( "produce a directory","")
+    dir_name=dir_name.replace("build a directory","")
+    dir_name=dir_name.replace("design a directory","")
+    dir_name=dir_name.replace("fabricate a directory","")
+    dir_name=dir_name.replace('make folder','')
+    dir_name=dir_name.replace("create a folder","")
+    dir_name=dir_name.replace("construct a folder","")
+    dir_name=dir_name.replace("devise a folder","")
+    dir_name=dir_name.replace("form a folder","")
+    dir_name=dir_name.replace("generate a folder","")
+    dir_name=dir_name.replace( "produce a folder","")
+    dir_name=dir_name.replace("build a folder","")
+    dir_name=dir_name.replace("design a folder","")
+    dir_name=dir_name.replace("fabricate a folder","")
+    dir_name=dir_name.replace(".","")
+
     if len(dir_name)==0:
         dir_name='test'
     try:
@@ -166,6 +155,8 @@ def create_files(filename):
     filename=filename.replace("construct a file","")
     filename=filename.replace("generate a file","")
     filename=filename.replace(".txt","")
+    filename=filename.replace(".","")
+
     if len(filename)==0:
         filename='test'
     try:
@@ -248,6 +239,6 @@ def read_note():
     return f"You tell me that {message}"
 
 if __name__=="__main__":
-    print(manual("cat"))
+    pass
    
     

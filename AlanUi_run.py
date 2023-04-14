@@ -10,22 +10,22 @@ import os
 from contextlib import redirect_stdout
 import io
 
-# Example for testing(in run function call Main() instead of wish())
-#import wish
-#import weather
-#import jokes
+import sys
+import os
+sys.path.append("..")
+sys.path.append("tts/")
+sys.path.append("intent_classification/")
+sys.path.append("features/")
+sys.path.append("stt/")
 
 
-class MainThread(QThread):
+from stt import whisper_stt
+from tts import speak
+from intent_classification import model,alan,nltk_utils
+from features import system,api,greet,browser
+from playsound import playsound
 
-    def __init__(self):
-
-        super(MainThread,self).__init__()
-'''    def run(self):
-        wish.wish()
-        #weather.weather("kolkata")'''
-    
-startExecution=MainThread()
+from main import mainexecution
 
 class Gui_Start(QMainWindow):
 
@@ -33,35 +33,22 @@ class Gui_Start(QMainWindow):
 
         super().__init__()
         self.ui=Ui_MainWindow()
-
         self.ui.setupUi(self)
-
-        self.ui.start_button.clicked.connect(self.startTask)
-    
-        
-    def startTask(self):
-
-       
         timer=QTimer(self)
         timer.timeout.connect(self.showTimeLive)
         timer.start(1000)
 
-        #f=io.StringIO()
-        #with redirect_stdout(f):
-        #greet=wish.wish()
-            #weather.weather("Mumbai")
-        #joke=jokes.jokes()
-        #res=system.system()
+        self.ui.start_button.clicked.connect(self.startTask)
         
-        self.ui.terminal.setText('Alan: I am your personal Desktop Assistant')
-        
-        startExecution.start()
+    def startTask(self):
+        while True:
+            result=mainexecution()
+            self.ui.terminal.append(result)      
 
     def showTimeLive(self):
         time_live=QTime.currentTime()
         time=time_live.toString()
         label_Time='TIME:'+time
-
         self.ui.time_browser.setText(label_Time)
 
 GuiApp=QApplication(sys.argv)

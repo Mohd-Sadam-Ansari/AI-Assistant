@@ -75,28 +75,13 @@
         {
             "tag":"visit",
             "patterns":[
-                "visit","website"
+                "visit",
+                "website"
             ],
             "responses":[
                 "visit"
             ]
         },
-        
-        {
-            "tag":"camera",
-            "patterns":[
-                "take pitcure",
-                "click a pitcure",
-                "take snap",
-                "turn on camera",
-                "open camera",
-                "take photo"
-            ],
-            "responses":[
-                "camera"
-            ]
-        },
-
         {
             "tag":"create_file",
             "patterns":[
@@ -180,9 +165,6 @@
             "patterns":[
                 "calculate",
                 "do calculation",
-                "perform mathematical computation",
-                "math calculation",
-                "compute",
                 "solve",
                 "equation",
                 "compute"
@@ -311,7 +293,7 @@
                 "joke"
             ]
         },
-
+        
         {
             "tag":"shutdown",
             "patterns":[
@@ -322,6 +304,7 @@
                 "switch off"
             ],
             "responses":[
+
                 "shutdown"
             ]
         },

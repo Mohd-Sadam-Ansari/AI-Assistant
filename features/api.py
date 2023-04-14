@@ -38,8 +38,8 @@ def computation(query):
     else:
         client=wolframalpha.Client('VTY239-55Y8AXJEW4')
         res=client.query(query)
-        result=next(res.results).text
-        return result  
+        output=next(res.results).text
+        return output
     
 #To fetch weather forecast of particular city
 def weather(location):
@@ -91,7 +91,7 @@ def search_wiki(query):
     if len(query)==0:
         return'Nothing found to search,please try again.'
     else:
-        result=wikipedia.summary(query)
+        result=wikipedia.summary(query,3)
         return result
 
 #To fetch latest news of India
@@ -117,15 +117,15 @@ def news(field):
     playsound('test.wav')
     os.remove('test.wav')
     arts=news["articles"]
-    article=[]
+    head=[]
+    day=['first','second','third','fourth','fifth']
     for articles in arts:
-        article.append([articles["title"],articles['url']])
-    for i in range(5):
-        speak.speak(article[i])
+        head.append(articles["title"])
+    for i in range(len(day)):
+        speak.speak(f"today's {day[i]} news is: {head[i]}")
         playsound('test.wav')
         os.remove('test.wav')
-        head=' '.join([str(element) for element in article])
-        return head
+        
 
 def show_time():
     t = time.localtime()

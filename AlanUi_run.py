@@ -9,6 +9,7 @@ import sys
 import os
 from contextlib import redirect_stdout
 import io
+import webbrowser
 
 import sys
 import os
@@ -39,6 +40,10 @@ class Gui_Start(QMainWindow):
         timer.start(1000)
 
         self.ui.start_button.clicked.connect(self.startTask)
+        self.ui.whatsapp.clicked.connect(self.whatsapp)
+        self.ui.flipkart.clicked.connect(self.flipkart)
+        self.ui.youtube.clicked.connect(self.youtube)
+        self.ui.pushButton.clicked.connect(self.mmyt)
         
     def startTask(self):
         while True:
@@ -50,6 +55,16 @@ class Gui_Start(QMainWindow):
         time=time_live.toString()
         label_Time='TIME:'+time
         self.ui.time_browser.setText(label_Time)
+    def whatsapp(self):
+        webbrowser.open("https://web.whatsapp.com")
+    def flipkart(self):
+        webbrowser.open("https://www.flipkart.com")
+    def youtube(self):
+        webbrowser.open("https://www.youtube.com")
+    def mmyt(self):
+        webbrowser.open("https://www.makemytrip.com")
+
+
 
 GuiApp=QApplication(sys.argv)
 Alan_ui=Gui_Start()

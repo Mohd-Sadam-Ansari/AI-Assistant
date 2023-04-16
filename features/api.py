@@ -7,10 +7,8 @@ import json
 import sys
 import os
 
-sys.path.append('stt/')
 sys.path.append('tts/')
 from tts import speak
-from stt import whisper_stt
 from playsound import playsound
 
 #To get a programming jokes
@@ -33,14 +31,22 @@ def computation(query):
     query=query.replace('math calculation','')
     query=query.replace('do calculation','')
     query=query.replace('into','multiply by')
-    if len(query)==0:
-        return'Equation not provided,please try again..'
-    else:
-        client=wolframalpha.Client('VTY239-55Y8AXJEW4')
-        res=client.query(query)
-        output=next(res.results).text
-        return output
-    
+    query=query.replace('.','')
+
+    try:
+        if len(query)!=0:
+            client=wolframalpha.Client('VTY239-55Y8AXJEW4')
+            res=client.query(query)
+            output=next(res.results).text
+            speak.speak(output)
+            playsound('test.wav')
+            os.remove('test.wav')
+            return output
+
+    except:
+        speak.speak('Equation not provided,please try again..')
+        playsound('test.wav')
+        os.remove('test.wav')
 #To fetch weather forecast of particular city
 def weather(location):
     location=location.replace('weather report','')
@@ -59,6 +65,8 @@ def weather(location):
     location=location.replace('!','')
     location=location.replace(".",'')
 
+    x=''
+
     if len(location)==0:
         location='mumbai'
     
@@ -76,11 +84,24 @@ def weather(location):
         wind_speed=response['wind']['speed']
         humidity=response['main']['humidity']
         description=response['weather'][0]['description']
-        temp=f"Temperature in {location} : {temp_celsius:.2f}℃ degree celcius"
+        temp=f"Temperature in {location} : {temp_celsius:.2f}℃ "
         wind=f"Wind Speed : {wind_speed} meters per second"
         humid=f"Humidity : {humidity}%"
-        weather=f"General Weather in {location} : {description}"
-        return temp,wind,humid,weather
+        weather=f"General Weather in{location} : {description}"
+        #speak.speak(temp)
+        #playsound('test.wav')
+        #os.remove('test.wav')
+        #speak.speak(wind)
+        #playsound('test.wav')
+        #os.remove('test.wav')
+        #speak.speak(humid)
+        #playsound('test.wav')
+        #os.remove('test.wav')
+        #speak.speak(weather)
+        #playsound('test.wav')
+        #os.remove('test.wav')
+        x=temp+" "+wind+" "+humid+" "+weather+" ."
+        return x
 
 #To retrive information from the wikipedia
 def search_wiki(query):
@@ -88,11 +109,18 @@ def search_wiki(query):
     query=query.replace("according to wikipedia",'')
     query=query.replace("from wikipedia",'')
     query=query.replace("search from wikipedia",'')
-    if len(query)==0:
-        return'Nothing found to search,please try again.'
-    else:
-        result=wikipedia.summary(query,3)
-        return result
+    query=query.replace("who is",'')
+    try:
+        if len(query)!=0:
+            output=wikipedia.summary(query,2)
+            speak.speak(output)
+            playsound('test.wav')
+            os.remove('test.wav')
+            return output
+    except:
+        speak.speak("Nothing found from wikipedia")
+        playsound('test.wav')
+        os.remove('test.wav')
 
 #To fetch latest news of India
 def news(field):
@@ -113,26 +141,27 @@ def news(field):
             url="https://newsapi.org/v2/top-headlines?country=in&apiKey=759eabe66a3949e79df242f6a6f37f9a"
     news=requests.get(url).text
     news=json.loads(news)
-    speak.speak("here is the news")
+    speak.speak("fetching the news")
     playsound('test.wav')
     os.remove('test.wav')
     arts=news["articles"]
     head=[]
+    new_url=[]
     day=['first','second','third','fourth','fifth']
+    headlines=''
     for articles in arts:
         head.append(articles["title"])
+        new_url.append(articles["url"])
     for i in range(len(day)):
         speak.speak(f"today's {day[i]} news is: {head[i]}")
         playsound('test.wav')
         os.remove('test.wav')
-        
+        headlines+=" "+str(i+1)+". "+str(head[i])+"---"+str(new_url[i])+"."   
+    return headlines
 
 def show_time():
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
-    speak.speak('time is'+current_time)
-    playsound('test.wav')
-    os.remove('test.wav')
     return current_time
 
 if __name__=="__main__":

@@ -19,9 +19,10 @@ def mainexecution():
     query=whisper_stt.transcribe()
     Query=str(query).lower()
     keyword=alan.keyword_extract(Query)
+    print(Query)
     if keyword=='news':
 
-        api.news(Query)
+        result=api.news(Query)
     elif keyword=='create_file':
         result=system.create_files(Query)
     elif keyword=='camera':
@@ -54,28 +55,24 @@ def mainexecution():
         result=system.launch_app(Query)
     elif keyword=='wikipedia':
         result=api.search_wiki(Query)
-        #speak.speak(result)
-        #playsound('test.wav')
     elif keyword=='google_search':
         result=browser.google_search(Query)
         speak.speak(result)
         playsound('test.wav')
     elif keyword=='how_to':
         result=browser.how_to(Query)
-        print(result)
     elif keyword=='play_on_yt':
         result=browser.play_on_youtube(Query)
     elif keyword=='ip_address':
         result=system.ip_address()
-        print(result)
-        speak.speak(result)
-        playsound('test.wav')
     elif keyword=='job_schedule':
         result=system.job_schedule()
     elif keyword=='switch_tab':
         result=system.switch_window()
     elif keyword=='visit':
         result=sites(Query)
+    elif keyword=='computation':
+        result=api.computation(Query)
     elif keyword=='goodbye':
         sys.exit()
     else:
@@ -86,3 +83,4 @@ def mainexecution():
     return result        
 
 
+print(mainexecution())

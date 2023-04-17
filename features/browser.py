@@ -15,7 +15,7 @@ def play_on_youtube(query):
 
     pywhatkit.playonyt(query)
     pyautogui.press('enter')
-    return True  
+      
 
 def sites(data):
     data=data.replace('alan','')
@@ -26,18 +26,20 @@ def sites(data):
     data=data.replace('website','')
     data=data.replace('.com','')
     data=data.replace('.','')
+    data=data.strip()
+
     if len(data)==0:
         speak.speak('website name is not found, please try again.')
         playsound('tets.wav')
     link=f'https://www.{data}.com'    
     webbrowser.open(link)
-    return True
 
 def google_search(query):
     query=query.replace('alan','')
     query=query.replace('ellen','')
     query=query.replace('google search','')
     query=query.replace('google','')
+    query=query.strip()
     try:
         pywhatkit.search(query)
         result=wikipedia.summary(query,2)

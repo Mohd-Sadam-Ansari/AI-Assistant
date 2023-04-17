@@ -14,12 +14,12 @@ def record_audio():
     r = sr.Recognizer()
 
     r.dynamic_energy_threshold = False
-    r.energy_threshold = 300
+    r.energy_threshold = 1000
 
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
         try:
-            audio = r.listen(source, timeout=3.0)
+            audio = r.listen(source, timeout=5.0)
 
         except sr.WaitTimeoutError:
             audio = 0

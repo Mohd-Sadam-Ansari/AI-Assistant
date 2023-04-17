@@ -14,19 +14,19 @@ from features import system,api,greet,browser
 from playsound import playsound
 import webbrowser
 
-def mainexecution():
+def listen():
     whisper_stt.record_audio()
     query=whisper_stt.transcribe()
     Query=str(query).lower()
+    return Query
+
+def mainexecution(Query):
     keyword=alan.keyword_extract(Query)
     print(Query)
     if keyword=='news':
-
         result=api.news(Query)
     elif keyword=='create_file':
         result=system.create_files(Query)
-    elif keyword=='camera':
-        result=system.take_picture()
     elif keyword=='delete_file':
         result=system.delete_files(Query)
     elif keyword=='create_directory':
@@ -39,10 +39,11 @@ def mainexecution():
         result=system.read_note()
         speak.speak(result)
         playsound('test.wav')
+        os.remove('test.wav')
     elif keyword=='restart':    
-        result=system.restart()
+        system.restart()
     elif keyword=='shutdown':
-        result=system.shutdown()
+        system.shutdown()
     elif keyword == 'time':
         result=api.show_time()
     elif keyword=='joke':
@@ -52,7 +53,7 @@ def mainexecution():
     elif keyword=='manual':
         result=system.manual(Query)
     elif keyword=='open':
-        result=system.launch_app(Query)
+        system.launch_app(Query)
     elif keyword=='wikipedia':
         result=api.search_wiki(Query)
     elif keyword=='google_search':
@@ -62,15 +63,15 @@ def mainexecution():
     elif keyword=='how_to':
         result=browser.how_to(Query)
     elif keyword=='play_on_yt':
-        result=browser.play_on_youtube(Query)
+        browser.play_on_youtube(Query)
     elif keyword=='ip_address':
         result=system.ip_address()
     elif keyword=='job_schedule':
         result=system.job_schedule()
     elif keyword=='switch_tab':
-        result=system.switch_window()
+        system.switch_window()
     elif keyword=='visit':
-        result=sites(Query)
+        browser.sites(Query)
     elif keyword=='computation':
         result=api.computation(Query)
     elif keyword=='goodbye':
@@ -80,7 +81,9 @@ def mainexecution():
         speak.speak(result)
         playsound('test.wav')
         os.remove("test.wav")
+
     return result        
 
-
-print(mainexecution())
+if __name__ == '__main__':
+    
+    mainexecution()

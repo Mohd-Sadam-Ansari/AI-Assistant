@@ -32,6 +32,7 @@ def computation(query):
     query=query.replace('do calculation','')
     query=query.replace('into','multiply by')
     query=query.replace('.','')
+    query=query.strip()
 
     try:
         if len(query)!=0:
@@ -64,7 +65,7 @@ def weather(location):
     location=location.replace('?','')
     location=location.replace('!','')
     location=location.replace(".",'')
-
+    location=location.strip()
     x=''
 
     if len(location)==0:
@@ -88,18 +89,18 @@ def weather(location):
         wind=f"Wind Speed : {wind_speed} meters per second"
         humid=f"Humidity : {humidity}%"
         weather=f"General Weather in{location} : {description}"
-        #speak.speak(temp)
-        #playsound('test.wav')
-        #os.remove('test.wav')
-        #speak.speak(wind)
-        #playsound('test.wav')
-        #os.remove('test.wav')
-        #speak.speak(humid)
-        #playsound('test.wav')
-        #os.remove('test.wav')
-        #speak.speak(weather)
-        #playsound('test.wav')
-        #os.remove('test.wav')
+        speak.speak(temp)
+        playsound('test.wav')
+        os.remove('test.wav')
+        speak.speak(wind)
+        playsound('test.wav')
+        os.remove('test.wav')
+        speak.speak(humid)
+        playsound('test.wav')
+        os.remove('test.wav')
+        speak.speak(weather)
+        playsound('test.wav')
+        os.remove('test.wav')
         x=temp+" "+wind+" "+humid+" "+weather+" ."
         return x
 

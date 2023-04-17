@@ -11,6 +11,8 @@ from tts import speak
 
 
 def launch_app(app_name):
+    app_name=app_name.replace('allen', '')
+    app_name=app_name.replace('ln', '')
     app_name=app_name.replace('alan','')
     app_name=app_name.replace('open','')
     app_name=app_name.replace('ellen,','')
@@ -20,7 +22,8 @@ def launch_app(app_name):
     app_name=app_name.replace('.','')
     app_name=app_name.replace(',','')
     app_name=app_name.replace('?','')
-
+    app_name=app_name.replace('!','')
+    app_name=app_name.strip()
 
     APP_LIST = {
     'gedit': ['gedit', 'g-edit', 'g edit.', 'editor', 'text editor'],
@@ -30,7 +33,7 @@ def launch_app(app_name):
     'libreoffice --draw': ['powerpoint', 'power point', 'power-point', 'presentation', 'powerpoint presentation', 'power point presentation', 'power-point presentation', 'p p t', 'p-p-t', 'presentation document', 'p p t document' 'powerpoint presentation document', 'power point presentation document', 'power-point presentation document', 'spread-sheet'],
     'gnome-terminal': ['terminal', 'c m d', 'command prompt', 'bash', 'shell', 'shell prompt', 'bash prompt'],
     'vlc': ['vlc', 'v l c', 'v-l-c', 'vlc player', 'v l c player', 'v-l-c player', 'vlc media player', 'v l c media player', 'v-l-c media player'],
-    'gnome-calculator': ['calculator', 'calculate', 'calci', 'calcy', 'calsi', 'calsy']
+    'gnome-calculator': ['calculator', 'calculate', 'calc', 'calci', 'calcy', 'calsi', 'calsy']
     }
     for key,value in APP_LIST.items():
         if app_name.lower() in value:
@@ -39,42 +42,52 @@ def launch_app(app_name):
         else:
             app_name=app_name
     try:
-        subprocess.call(app_name)
-        return True
+        os.system(app_name)
     except:
-        return "Application not found."
-
+        speak.speak("Application not found.")
+        playsound('test.wav')
+        os.remove('test.wav')
 def shutdown():
     try:
+        speak.speak("powering off")
+        playsound('test.wav')
+        os.remove('test.wav')
         os.system("systemctl poweroff -i")
-        return True
     except OSError as error:
-        return error
+        speak.speak("couldn't power off due to system issue")
+        playsound('test.wav')
+        os.remove('test.wav')
 
 def restart():
     try:
+        speak.speak("restarting this pc")
+        playsound('test.wav')
+        os.remove('test.wav')
         os.system("reboot")
-        return True
     except OSError as error:
-        return error
+        speak.speak("couldn't restart this pc due to system issue")
+        playsound('test.wav')
+        os.remove('test.wav')
+        
 
 def manual(command):
-    command.replace('man','')
-    command.replace('alan','')
-    command.replace('ellen','')
-    command.replace('manual','')
-    command.replace('command','')
-    command.replace('of','')
-    command.replace('provide','')
-    command.replace('instructions about','')
+    command=command.replace('man','')
+    command=command.replace('alan','')
+    command=command.replace('ellen','')
+    command=command.replace('manual','')
+    command=command.replace('command','')
+    command=command.replace('of','')
+    command=command.replace('provide','')
+    command=command.replace('instructions about','')
+    command=command.strip()
     command_dict={'ls':['list'],
     'cat':['concatenate'],
     'pwd':['print working directory'],
     'cp':['copy'],
     'mv':['move'],
     'mkdir':['make directory','make folder','make directories'],
-    'rmdir':['remove directory','remove directories','remove folder']
-    ,'rm':['rmove files']
+    'rmdir':['remove directory','remove directories','remove folder'],
+    'rm':['rmove files']
     }
 
     for key,value in command_dict.items():
@@ -87,7 +100,9 @@ def manual(command):
         output=os.popen(f"man {command}").read()
         return output
     except:
-        return "No manual found."
+        speak.speak("No manual found.")
+        playsound('test.wav')
+        os.remove('test.wav')
 
 def create_directories(dir_name):
     dir_name=dir_name.replace('alan','')
@@ -113,7 +128,7 @@ def create_directories(dir_name):
     dir_name=dir_name.replace("design a folder","")
     dir_name=dir_name.replace("fabricate a folder","")
     dir_name=dir_name.replace(".","")
-
+    dir_name=dir_name.strip()
     if len(dir_name)==0:
         dir_name='test'
     try:
@@ -122,7 +137,9 @@ def create_directories(dir_name):
         os.makedirs(user_dir,exist_ok=True)
         return f'{user_dir} successfully created.'
     except:
-        return f'something went wrong while creating {user_dir}'
+        speak.speak(f'something went wrong while creating {user_dir}')
+        playsound('test.wav')
+        os.remove('test.wav')
 
 def delete_directories(dir_name):
     dir_name=dir_name=replace('alan','')
@@ -137,6 +154,7 @@ def delete_directories(dir_name):
     dir_name=dir_name=replace("trash a directory","")
     dir_name=dir_name=replace("erase a directory","")
     dir_name=dir_name=replace("trash a folder","")
+    dir_name=dir_name.strip()
     if len(dir_name)==0:
         dir_name=='test'
     try:
@@ -145,17 +163,23 @@ def delete_directories(dir_name):
         os.rmdir(user_dir)
         return f"{user_dir} successfully removed."
     except:
-        return f"directorie can't be deleted as it is not present or not empty"
-
+        speak.speak(f"directorie can't be deleted as it is not present or not empty")
+        playsound('test.wav')
+        os.remove('test.wav')
 def create_files(filename):
     filename=filename.replace('alan','')
     filename=filename.replace('ellen','')
     filename=filename.replace("make file","")
     filename=filename.replace("create a file","")
+    filename=filename.replace("create file","")
     filename=filename.replace("construct a file","")
+    filename=filename.replace("construct file","")
     filename=filename.replace("generate a file","")
+    filename=filename.replace("generate file","")
     filename=filename.replace(".txt","")
     filename=filename.replace(".","")
+    filename=filename.strip()
+
 
     if len(filename)==0:
         filename='test'
@@ -165,7 +189,9 @@ def create_files(filename):
         subprocess.run(["touch",file_path])
         return f'{filename} successfully created.'
     except:
-        return f"something went wrong while creating {filename}"
+        speak.speak(f"something went wrong while creating {filename}")
+        playsound('test.wav')
+        os.remove('test.wav')
         
 def delete_files(filename):
     filename=filename.replace('alan','')
@@ -176,6 +202,7 @@ def delete_files(filename):
     filename=filename.replace("trash a file","")
     filename=filename.replace("erase a file","")
     filename=filename.replace("delete a file","")
+    filename=filename.strip()
     if len(filename)==0:
         filename=='test'
     try:
@@ -184,8 +211,9 @@ def delete_files(filename):
         os.system(f'rm {file_path}')
         return f'{filename} successfully deleted.'
     except:
-        return f"something went wrong while removing {filename}"
-
+        speak.speak(f"something went wrong while removing {filename}")
+        playsound('test.wav')
+        os.remove('test.wav')
 def switch_window():
     pyautogui.keyDown("alt")
     pyautogui.press("tab")
@@ -239,6 +267,4 @@ def read_note():
     return f"You tell me that {message}"
 
 if __name__=="__main__":
-    pass
-   
-    
+    launch_app(" exel")

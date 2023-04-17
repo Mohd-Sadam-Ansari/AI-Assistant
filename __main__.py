@@ -25,8 +25,8 @@ from tts import speak
 from intent_classification import model,alan,nltk_utils
 from features import system,api,greet,browser
 from playsound import playsound
-
-from main import mainexecution
+from features import greet
+from main import mainexecution,listen
 
 class Gui_Start(QMainWindow):
 
@@ -44,11 +44,13 @@ class Gui_Start(QMainWindow):
         self.ui.flipkart.clicked.connect(self.flipkart)
         self.ui.youtube.clicked.connect(self.youtube)
         self.ui.pushButton.clicked.connect(self.mmyt)
-        
+        greet.greeting()
+
     def startTask(self):
-        while True:
-            result=mainexecution()
-            self.ui.terminal.append(result)      
+        Query=listen()
+        self.ui.terminal.append("You: "+Query)
+        result=mainexecution(Query)
+        self.ui.terminal.append("Alan: "+result)      
 
     def showTimeLive(self):
         time_live=QTime.currentTime()
@@ -63,8 +65,6 @@ class Gui_Start(QMainWindow):
         webbrowser.open("https://www.youtube.com")
     def mmyt(self):
         webbrowser.open("https://www.makemytrip.com")
-
-
 
 GuiApp=QApplication(sys.argv)
 Alan_ui=Gui_Start()

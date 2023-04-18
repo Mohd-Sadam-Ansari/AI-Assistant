@@ -111,8 +111,5 @@ wolframalpha
 wikipedia
 pywikihow
 
-##### For webcam control #####
-cv2
-
 ##### For STT #####
 #ovos

@@ -2,7 +2,6 @@ import os,signal
 import subprocess
 import pyautogui
 import time
-import shutil
 import schedule
 import sys
 from playsound import playsound
